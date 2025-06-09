@@ -1,0 +1,39 @@
+# Nama alur kerja yang akan muncul di tab Actions GitHub
+name: Build and Test Next.js
+
+# Pemicu: Kapan alur kerja ini akan berjalan
+on:
+  push:
+    # Hanya berjalan saat ada push ke branch 'master'
+    branches: [master]
+
+# Daftar pekerjaan (jobs) yang akan dieksekusi
+jobs:
+  # Nama pekerjaan, bisa apa saja
+  build-and-test:
+    # Sistem operasi yang akan digunakan
+    runs-on: ubuntu-latest
+
+    # Langkah-langkah yang akan dijalankan
+    steps:
+      # Langkah 1: Mengunduh (checkout) kode Anda dari repositori
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Langkah 2: Menyiapkan lingkungan Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18 # Gunakan Node.js versi 18
+
+      # Langkah 3: Menginstal semua dependensi npm
+      - name: Install dependencies
+        run: npm install
+
+      # Langkah 4: Menjalankan proses build untuk produksi
+      - name: Build project
+        run: npm run build
+
+      # Langkah 5: Menjalankan linter untuk memeriksa kualitas kode
+      - name: Run linter
+        run: npm run lint

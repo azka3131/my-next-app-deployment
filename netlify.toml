@@ -1,0 +1,9 @@
+[build]
+  # Perintah untuk membangun aplikasi
+  command = "npm run build"
+  # Direktori output yang akan di-deploy
+  publish = ".next"
+
+# Plugin esensial untuk Next.js di Netlify
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
