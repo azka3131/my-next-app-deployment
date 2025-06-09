@@ -5,7 +5,7 @@ name: Build and Test Next.js
 on:
   push:
     # Hanya berjalan saat ada push ke branch 'master'
-    branches: [master]
+    branches: [ master ]
 
 # Daftar pekerjaan (jobs) yang akan dieksekusi
 jobs:
@@ -36,4 +36,4 @@ jobs:
 
       # Langkah 5: Menjalankan linter untuk memeriksa kualitas kode
       - name: Run linter
-        run: npm run lint
+        run: CI=true npm run lint
